@@ -135,6 +135,7 @@ export default class Products extends Component {
     addToCart = async (item) => {
         console.log('-----item', item)
         let myCart = await localStorage.getItem('MyCart') ? JSON.parse(localStorage.getItem('MyCart')) : [];
+        if(!myCart) myCart = [];
         this.state.cartItem = await myCart.concat(this.state.cartItem);
         if (item.qty > 0) {
             let obj = await this.state.cartItem.find(o => o._id === item._id);

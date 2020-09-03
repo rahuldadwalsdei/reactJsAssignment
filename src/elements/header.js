@@ -40,6 +40,7 @@ export default class Header extends Component {
     constructor(props) {
         super(props);
         let myCart = localStorage.getItem('MyCart') ? JSON.parse(localStorage.getItem('MyCart')) : [];
+        if(!myCart) myCart = [];
         this.updateQuantity(myCart)
         this.handleClickLogout = this.handleClickLogout.bind(this)
     }
@@ -79,6 +80,7 @@ export default class Header extends Component {
 
     removeFromCart = async (index) => {
         let myCart = await localStorage.getItem('MyCart') ? JSON.parse(localStorage.getItem('MyCart')) : [];
+        if(!myCart) myCart = [];
         await myCart.splice(index, 1);
         let quant = 0;
         let price = 0;
